@@ -44,7 +44,6 @@ export const convertToMakeResults = (data, tokenize) => {
       .replace(
         new RegExp(`\\\\"${MAP_TYPE_TOKENS["number"]}\\\\"`, "g"),
         function (_) {
-          console.log(_);
           varCounters["number"] += 1;
           return `".num${varCounters["number"]}."`;
         }

@@ -17,7 +17,6 @@ function JSONInput({ setSearch, converted, setConverted }) {
   };
   let handleClick = debounce(() => {
     let [res, obj] = convertToMakeResults(value, true);
-    console.log(res, obj);
     if (res === -1) {
       setError(true);
     } else {

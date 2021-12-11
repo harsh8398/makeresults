@@ -4,6 +4,7 @@ import SplunkThemeProvider from "@splunk/themes/SplunkThemeProvider";
 import JSONInput from "./components/JSONInput";
 import ColumnLayout from "@splunk/react-ui/ColumnLayout";
 import Heading from "@splunk/react-ui/Heading";
+import Link from "@splunk/react-ui/Link";
 import MakeResults from "./components/MakeResults";
 
 function App() {
@@ -12,23 +13,46 @@ function App() {
   return (
     <SplunkThemeProvider family="prisma" density="compact" colorScheme="dark">
       <div className="App">
-        <Heading level={1}>&gt; makeresults</Heading>
-        <ColumnLayout gutter={8}>
-          <ColumnLayout.Row>
-            <ColumnLayout.Column span={12}>
-              <JSONInput
-                setSearch={setSearch}
-                converted={converted}
-                setConverted={setConverted}
-              />
-            </ColumnLayout.Column>
-          </ColumnLayout.Row>
-          <ColumnLayout.Row>
-            <ColumnLayout.Column span={12}>
-              {converted && <MakeResults search={search} />}
-            </ColumnLayout.Column>
-          </ColumnLayout.Row>
-        </ColumnLayout>
+        <div className="Header">
+          <Heading level={1}>&gt; makeresults</Heading>
+        </div>
+        <div className="Body">
+          <ColumnLayout gutter={8}>
+            <ColumnLayout.Row>
+              <ColumnLayout.Column span={12}>
+                <JSONInput
+                  setSearch={setSearch}
+                  converted={converted}
+                  setConverted={setConverted}
+                />
+              </ColumnLayout.Column>
+            </ColumnLayout.Row>
+            <ColumnLayout.Row>
+              <ColumnLayout.Column span={12}>
+                {converted && <MakeResults search={search} />}
+              </ColumnLayout.Column>
+            </ColumnLayout.Row>
+          </ColumnLayout>
+        </div>
+        <div className="Footer">
+          <ColumnLayout gutter={8}>
+            <ColumnLayout.Row>
+              <ColumnLayout.Column span={6}>
+                <Heading level={4}>
+                  <Link to="https://github.com/harsh8398/makeresults">
+                    Source
+                  </Link>
+                </Heading>
+              </ColumnLayout.Column>
+              <ColumnLayout.Column span={6}>
+                <Heading level={4} style={{ textAlign: "right" }}>
+                  Made with ☕ by{" "}
+                  <Link to="https://github.com/harsh8398">Harsh Patel</Link>
+                </Heading>
+              </ColumnLayout.Column>
+            </ColumnLayout.Row>
+          </ColumnLayout>
+        </div>
       </div>
     </SplunkThemeProvider>
   );

@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import SplunkThemeProvider from "@splunk/themes/SplunkThemeProvider";
+import JSONInput from "./components/JSONInput";
+import ColumnLayout from "@splunk/react-ui/ColumnLayout";
+import Heading from "@splunk/react-ui/Heading";
+import MakeResults from "./components/MakeResults";
 
 function App() {
+  const [search, setSearch] = useState("# search will get generated here...");
+  const [converted, setConverted] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SplunkThemeProvider family="prisma" density="compact" colorScheme="dark">
+      <div className="App">
+        <Heading level={1}>&gt; makeresults</Heading>
+        <ColumnLayout gutter={8}>
+          <ColumnLayout.Row>
+            <ColumnLayout.Column span={12}>
+              <JSONInput
+                setSearch={setSearch}
+                converted={converted}
+                setConverted={setConverted}
+              />
+            </ColumnLayout.Column>
+          </ColumnLayout.Row>
+          <ColumnLayout.Row>
+            <ColumnLayout.Column span={12}>
+              {converted && <MakeResults search={search} />}
+            </ColumnLayout.Column>
+          </ColumnLayout.Row>
+        </ColumnLayout>
+      </div>
+    </SplunkThemeProvider>
   );
 }
 

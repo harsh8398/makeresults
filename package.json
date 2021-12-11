@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "license": "MIT",
-  "homepage": "https://harsh8398.github.io/makeresults",
+  "homepage": "https://makeresults.alacrity.dev",
   "dependencies": {
     "@splunk/react-icons": "^3.1.0",
     "@splunk/react-search": "^4.0.1",

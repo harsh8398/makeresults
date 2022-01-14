@@ -6,10 +6,17 @@ import ColumnLayout from "@splunk/react-ui/ColumnLayout";
 import Heading from "@splunk/react-ui/Heading";
 import Link from "@splunk/react-ui/Link";
 import MakeResults from "./components/MakeResults";
+import ReactGA from "react-ga";
+
+const TRACKING_ID = "UA-143614136-3";
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
   const [search, setSearch] = useState("# search will get generated here...");
   const [converted, setConverted] = useState(false);
+
+  ReactGA.pageview(window.location.pathname + window.location.search);
+
   return (
     <SplunkThemeProvider family="prisma" density="compact" colorScheme="dark">
       <div className="App">

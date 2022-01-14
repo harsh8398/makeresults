@@ -6,6 +6,7 @@ import ArrowLeft from "@splunk/react-icons/ArrowLeft";
 import Check from "@splunk/react-icons/Check";
 import JSONTree from "@splunk/react-ui/JSONTree";
 import { debounce, convertToMakeResults } from "../utils/utils";
+import ReactGA from "react-ga";
 
 function JSONInput({ setSearch, converted, setConverted }) {
   const [value, setValue] = useState("");
@@ -13,7 +14,6 @@ function JSONInput({ setSearch, converted, setConverted }) {
   const [error, setError] = useState(false);
   let handleChange = (e, { value }) => {
     setValue(value);
-    // delayedMakeResults();
   };
   let handleClick = debounce(() => {
     let [res, obj] = convertToMakeResults(value, true);
@@ -26,6 +26,10 @@ function JSONInput({ setSearch, converted, setConverted }) {
     }
   });
   if (error) {
+    ReactGA.exception({
+      description: "Invalid JSON input provided",
+      fatal: false,
+    });
     // reset
     return (
       <>
@@ -59,7 +63,7 @@ function JSONInput({ setSearch, converted, setConverted }) {
         </>
       ) : (
         <>
-          <h1>Paste your JSON event:</h1>
+          <h1>Paste any JSON event:</h1>
           <Text
             value={value}
             startAdornment={
@@ -74,7 +78,7 @@ function JSONInput({ setSearch, converted, setConverted }) {
               </div>
             }
             multiline
-            placeholder="paste your json event here..."
+            placeholder="Paste any JSON event here..."
             onChange={handleChange}
             spellCheck={false}
             rowsMax={20}

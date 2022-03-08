@@ -26,9 +26,9 @@ function JSONInput({ setSearch, converted, setConverted }) {
     }
   });
   if (error) {
-    ReactGA.exception({
-      description: "Invalid JSON input provided",
-      fatal: false,
+    ReactGA.event({
+      category: "JSONParseError",
+      action: "Malformed JSON was provided.",
     });
     // reset
     return (

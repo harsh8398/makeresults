@@ -3,7 +3,7 @@ import ReactGA from "react-ga";
 
 function MakeResults({ search }) {
   ReactGA.event({
-    category: "MakeResults",
+    category: "MakeResultsSuccess",
     action:
       "Converted a JSON event to a event generating SPL command with makeresults",
   });

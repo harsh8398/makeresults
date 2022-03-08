@@ -23,6 +23,10 @@ function App() {
   const [open, setOpen] = useState(false);
 
   const handleRequestOpen = () => {
+    ReactGA.event({
+      category: "DemoClick",
+      action: "The demo modal will open.",
+    });
     setOpen(true);
   };
 
@@ -75,7 +79,28 @@ function App() {
               </ColumnLayout.Column>
               <ColumnLayout.Column span={6}>
                 <Heading level={4} style={{ textAlign: "right" }}>
-                  <Link to="https://github.com/harsh8398/makeresults">
+                  <Link
+                    to="https://github.com/harsh8398/makeresults/issues/new"
+                    onClick={() => {
+                      ReactGA.event({
+                        category: "ReportIssueClick",
+                        action: "User redirected to github report issue page.",
+                      });
+                    }}
+                  >
+                    Report an Issue
+                  </Link>
+                  &nbsp;&nbsp;&nbsp;
+                  <Link
+                    to="https://github.com/harsh8398/makeresults"
+                    onClick={() => {
+                      ReactGA.event({
+                        category: "SourceClick",
+                        action:
+                          "The user will be redirected to the github repo.",
+                      });
+                    }}
+                  >
                     Source
                   </Link>
                 </Heading>

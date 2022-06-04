@@ -81,8 +81,6 @@ function JSONInput({ setSearch, converted, setConverted }) {
             placeholder="Paste any JSON event here..."
             onChange={handleChange}
             spellCheck={false}
-            rowsMax={20}
-            maxLength={1000}
           />
           <br />
           <Button
